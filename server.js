@@ -3,6 +3,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const nunjucks = require('nunjucks');
+const socket = require('./socket');
 
 const app = express();
 app.set('port', 8000);
@@ -33,8 +34,9 @@ app.use(require('./router'));
 
 const PORT = 8000;
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
     console.log(`server is running on port ${PORT}`);
 });
 
 
+socket(server);

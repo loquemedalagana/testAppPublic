@@ -14,7 +14,7 @@ module.exports = (server) => {
         ws.on('close', () => {
             console.log('a user is gone', ip);
             clearInterval(ws.interval);
-        };
+        });
         ws.interval = setInterval(() => {
             if(ws.readyState === ws.OPEN) {
                 ws.send('서버에서 클라로 메세지 보냅니다.');

@@ -8,7 +8,14 @@
     <h1>hello socket</h1>
     <h2>please press F12 to check the status</h2>
     <script>
-        
+        const socket = new WebSocket('ws://localhost:8000');
+        socket.onopen = () => {
+            console.log('successfully connected');
+        }
+        socket.onmessage = (event) => {
+            console.log(event.data);
+            socket.send('reply from client to server');
+        }
     </script>
 </body>
 </html>
